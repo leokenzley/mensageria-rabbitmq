@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "1f170e75-6ea0-42a1-a676-43639031c083",
+		"name": "Microserviço Mensageria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1717938"
+	},
+	"item": [
+		{
+			"name": "Pub",
+			"item": [
+				{
+					"name": "Pub preço",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"codigoProduto\": \"16587\",\n    \"quantidadeProduto\": 156\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_PUB_URL}}/api/v1/preco",
+							"host": [
+								"{{API_PUB_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"preco"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
