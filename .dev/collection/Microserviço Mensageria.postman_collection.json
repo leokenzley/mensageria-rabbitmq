@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"codigoProduto\": \"16587\",\n    \"quantidadeProduto\": 156\n}",
+							"raw": "{\n    \"codigoProduto\": \"16588\",\n    \"quantidadeProduto\": 156\n}",
 							"options": {
 								"raw": {
 									"language": "json"

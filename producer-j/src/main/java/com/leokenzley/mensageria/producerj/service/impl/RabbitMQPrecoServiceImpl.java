@@ -14,7 +14,7 @@ public class RabbitMQPrecoServiceImpl implements RabbitMQPrecoService {
     @Autowired
     private RabbitTemplate rabbitTemplate;
     @Override
-    public void enviaMensagem(Object mensagem) {
+    public void sendMessage(Object mensagem) {
         this.rabbitTemplate.convertAndSend(queuePreco, mensagem);
     }
 }

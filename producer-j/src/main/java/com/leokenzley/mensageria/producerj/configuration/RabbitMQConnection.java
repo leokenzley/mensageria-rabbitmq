@@ -17,42 +17,42 @@ public class RabbitMQConnection {
     private String exchangeDirect;
 
     @Value("${rabbitmq-config.queue.preco.nome}")
-    private String queuePreco;
+    private String productQueueName;
     private final AmqpAdmin amqpAdmin;
 
     public RabbitMQConnection(AmqpAdmin amqpAdmin){
         this.amqpAdmin = amqpAdmin;
     }
 
-    private Queue fila(String fila) {
-        return new Queue(fila, true, false, false);
+    private Queue queue(String queue) {
+        return new Queue(queue, true, false, false);
     }
 
-    private DirectExchange trocaDireta() {
+    private DirectExchange exchangeDirect() {
         return new DirectExchange(exchangeDirect);
     }
 
-    private Binding relacionamento(Queue fila, DirectExchange troca) {
+    private Binding relationShiping(Queue queue, DirectExchange exchange) {
         return new Binding(
-                fila.getName(),
+                queue.getName(),
                 Binding.DestinationType.QUEUE,
-                troca.getName(),
-                fila.getName(),
+                exchange.getName(),
+                queue.getName(),
                 null);
     }
 
     @PostConstruct
     private void adiciona(){
-        log.info("criando a file: {}", queuePreco);
-        Queue filaPreco = this.fila(queuePreco);
-        log.info("Declarando a exchange: {}", exchangeDirect);
-        DirectExchange troca = this.trocaDireta();
-        Binding ligacao = this.relacionamento(filaPreco, troca);
+        log.info("create a product: {}", productQueueName);
+        Queue queueProduct = this.queue(productQueueName);
+        log.info("Declare a exchange: {}", exchangeDirect);
+        DirectExchange exchange = this.exchangeDirect();
+        Binding binding = this.relationShiping(queueProduct, exchange);
 
-        log.info("Declarando as filas");
-        this.amqpAdmin.declareQueue(filaPreco);
-        this.amqpAdmin.declareExchange(troca);
-        this.amqpAdmin.declareBinding(ligacao);
+        log.info("Declare as queue");
+        this.amqpAdmin.declareQueue(queueProduct);
+        this.amqpAdmin.declareExchange(exchange);
+        this.amqpAdmin.declareBinding(binding);
     }
 }
 
