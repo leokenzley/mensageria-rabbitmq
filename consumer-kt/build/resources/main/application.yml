@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    default: ${ENVIRONMENT}
+
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USER}
+    password: ${RABBITMQ_PASSWORD}
+
+rabbitmq-config:
+  exchanges:
+    direta:
+      nome: ${RABBITMQ_CONFIG_EXCHANGES_DIRETA_NOME}
+  queue:
+    preco:
+      nome: ${RABBITMQ_QUEUE_PRECO_NOME}
+  consumer:
+    consumerkt-username: ${RABBITMQ_CONFIG_CONSUMERKT_USERNAME}
+    consumerkt-password: ${RABBITMQ_CONFIG_CONSUMERKT_PASSWORD}
+
+server:
+  port: ${SERVER_PORT}
